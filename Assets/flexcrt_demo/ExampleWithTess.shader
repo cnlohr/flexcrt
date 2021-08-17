@@ -15,7 +15,7 @@ Shader "flexcrt/ExampleWithTess"
 		#pragma fragment frag
 		#pragma geometry geo
 		#pragma multi_compile_fog
-        #pragma target 5.0
+		#pragma target 5.0
 
 		#define CRTTEXTURETYPE uint4
 		#include "/Assets/flexcrt/flexcrt.cginc"
@@ -24,14 +24,15 @@ Shader "flexcrt/ExampleWithTess"
 
 	SubShader
     {
-		Tags { "RenderType"="Opaque" }
-
+		Tags { }
+        ZTest always
+		ZWrite Off
+		
 		Pass
 		{
-            Name "Demo Compute Test"
+            Name "Demo Compute Test"	
 			
 			CGPROGRAM
-			
 			#pragma hull hull
 			#pragma domain dom
 
@@ -72,6 +73,7 @@ Shader "flexcrt/ExampleWithTess"
 				float edgeTess[4] : SV_TessFactor;
 				float insideTess[2] : SV_InsideTessFactor;
 			};
+
 			tessFactors hullConstant(InputPatch<vtx, 4> I , uint quadID : SV_PrimitiveID)
 			{
 				tessFactors o = (tessFactors)0;
@@ -119,7 +121,7 @@ Shader "flexcrt/ExampleWithTess"
 			// No extra instances for this test.
 			[instance(32)]
 
-			void geo( triangle vtx input[3], inout PointStream<g2f> stream,
+			void geo( point vtx input[1], inout PointStream<g2f> stream,
 				uint instanceID : SV_GSInstanceID, uint geoPrimID : SV_PrimitiveID )
 			{
 				//if( geoPrimID < 0 ) discard;
@@ -134,7 +136,7 @@ Shader "flexcrt/ExampleWithTess"
 					g2f o;
 					uint blockid = ((i + instanceID * 128) + geoPrimID * 4096)*(TESS_DIVX*TESS_DIVY) + subdivid;
 					o.vertex = FlexCRTCoordinateOut( uint2( blockid % 4096, blockid / 4096 ) );
-					o.color = uint4( (_Time.y * 65536)%65536, (subdivid%2)*65536, 0, 0 );
+					o.color = uint4( (_Time.y * 256)%256, (subdivid%2)*256, 0, 0 );
 					stream.Append(o);
 				}
 			}

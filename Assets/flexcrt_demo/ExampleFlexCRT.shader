@@ -18,7 +18,9 @@
 
 	SubShader
     {
-		Tags { "RenderType"="Opaque" }
+		Tags { }
+        ZTest always
+		ZWrite Off
 
 		Pass
 		{
