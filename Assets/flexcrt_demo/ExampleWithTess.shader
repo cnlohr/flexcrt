@@ -1,4 +1,10 @@
-﻿Shader "flexcrt/ExampleWithTess"
+﻿//
+// Demo showing how to perform 8 million random-writes per CRT pass.
+// This demo abuses tessellation to turn the two emitted faces per
+// frame into 2048 (though, it could go as high as 7,938)
+//
+
+Shader "flexcrt/ExampleWithTess"
 {
 	Properties
 	{
