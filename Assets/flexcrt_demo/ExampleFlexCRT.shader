@@ -65,7 +65,7 @@
 				// Just FYI you get 64kB of local variable space.
 				
 				int batchID = input[0].batchID;
-				
+
 				// For geometry shaders on CRTs, you get two triangles per pass, if split as points, you get
 				// the first point for each triangle that are made in the quad.  The batchID may look a little weird
 				// but, the idea is if you're in the next batch, that's a unique instance ID.

@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ExampleFlexCRT
+  m_Name: ExampleFlexCRTDebug
   m_Shader: {fileID: 4800000, guid: 26f42f569f15b5f4e80740c6a2a73336, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
