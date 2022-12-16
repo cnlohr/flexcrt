@@ -9,26 +9,26 @@
 		#pragma fragment frag
 		#pragma geometry geo
 		#pragma multi_compile_fog
-        #pragma target 5.0
+		#pragma target 5.0
 
 		#define CRTTEXTURETYPE uint4
-		#include "/Assets/flexcrt/flexcrt.cginc"
+		#include "/Assets/flexcrt/Assets/flexcrt/flexcrt.cginc"
 	ENDCG
 
 
 	SubShader
-    {
+	{
 		Tags { }
-        ZTest always
+		ZTest always
 		ZWrite Off
 
 		Pass
 		{
-            Name "Demo Compute Test"
+			Name "Demo Compute Test"
 			
 			CGPROGRAM
 			
-			#include "/Assets/hashwithoutsine/hashwithoutsine.cginc"
+			#include "/Assets/flexcrt/Assets/hashwithoutsine/hashwithoutsine.cginc"
 
 			struct v2g
 			{
@@ -39,7 +39,7 @@
 			struct g2f
 			{
 				float4 vertex		   : SV_POSITION;
-				uint4 color            : TEXCOORD0;
+				uint4 color			: TEXCOORD0;
 			};
 
 			// The vertex shader doesn't really perform much anything.
