@@ -14,6 +14,7 @@
 #error Error: Cannot include both the unity custom render texture system and FLEXCRT.
 #endif
 
+// Depending on what you are doing you may want to also include:
 //#include "UnityCG.cginc"
 //#include "UnityStandardConfig.cginc"
 
