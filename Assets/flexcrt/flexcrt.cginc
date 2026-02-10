@@ -14,8 +14,8 @@
 #error Error: Cannot include both the unity custom render texture system and FLEXCRT.
 #endif
 
-#include "UnityCG.cginc"
-#include "UnityStandardConfig.cginc"
+//#include "UnityCG.cginc"
+//#include "UnityStandardConfig.cginc"
 
 // Keep in sync with CustomRenderTexture.h
 #define kCustomTextureBatchSize 16
@@ -170,7 +170,15 @@ v2f_init_customrendertexture DefaultInitCustomRenderTextureVertexShader (appdata
 
 float4 FlexCRTCoordinateOut( uint2 coordOut )
 {
+#if UNITY_UV_STARTS_AT_TOP
+	// DirectX
 	return float4((coordOut.xy*2-FlexCRTSize+1)/FlexCRTSize, 0.5, 1 );
+#else
+	// OpenGL
+	float2 po = (coordOut.xy*2-FlexCRTSize+1)/FlexCRTSize;
+	po.y = -po.y;
+	return float4(po, 0.5, 1 );
+#endif
 }
 
 #endif
